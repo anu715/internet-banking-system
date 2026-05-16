@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#005047",
+                        "inverse-primary": "#99d0d9",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "on-background": "#111c2d",
+                        "on-secondary-fixed": "#00201c",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f0f3ff",
+                        "outline-variant": "#bfc8ca",
+                        "primary-container": "#0d4c54",
+                        "surface-dim": "#cfdaf2",
+                        "primary": "#00343a",
+                        "surface-container-high": "#dee8ff",
+                        "on-surface": "#111c2d",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#2f666e",
+                        "on-secondary-container": "#007165",
+                        "on-surface-variant": "#40484a",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#424547",
+                        "surface-variant": "#d8e3fb",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e0e3e5",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-container": "#62fae3",
+                        "inverse-surface": "#263143",
+                        "surface-container-highest": "#d8e3fb",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#e7eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "background": "#f9f9ff",
+                        "on-primary-fixed": "#001f24",
+                        "secondary": "#006b5f",
+                        "secondary-fixed-dim": "#3cddc7",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#b5ecf5",
+                        "secondary-fixed": "#62fae3",
+                        "on-tertiary-container": "#b0b2b4",
+                        "tertiary": "#2b2f31",
+                        "primary-fixed-dim": "#99d0d9",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed": "#191c1e",
+                        "on-primary-fixed-variant": "#104e56",
+                        "outline": "#70797a",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "on-primary-container": "#85bbc4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "gutter": "16px",
+                        "margin-mobile": "20px",
+                        "stack-sm": "8px",
+                        "container-padding": "24px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h3": ["Manrope"],
+                        "body-sm": ["Inter"],
+                        "h1": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "numeric-display": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "numeric-display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9ff;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .card-glass {
+            background: linear-gradient(135deg, #00343a 0%, #0d4c54 100%);
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<header class="flex justify-between items-center px-5 h-16 w-full fixed top-0 z-50 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 font-manrope antialiased tracking-tight">
+    <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-teal-900" data-icon="menu">menu</span>
+        <h1 class="text-lg font-bold text-teal-900 dark:text-teal-50">TrustBank</h1>
+    </div>
+    <div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+        <img class="w-full h-full object-cover" data-alt="close-up portrait of a professional businessman with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARS8vSznHtT12-IcxXDPm_XKpZ_qVJ0btyE-Pm_XuwDKlXOUsTWpEqYMrtJMGT8Xacz5Rr8oBF3ew5vCLH0DsBw-BVH5hGaq8FvkFx5QbLIkhRF-mHowE03Xd7QTA7vb5v5GUV-Y92YQJTs4huJQXoZ4jY79AN2WKsx6oEQPEc499O7DMiQYcwhpoLomjD32TIX_iFiuFDCYgcyUPpzNbocOhp1OhqaIOxSL9KSZCFbGElEP4LLiVRKNuiCaSV_ZOHJpIWWqj0zso"/>
+    </div>
+</header>
+<main class="pt-20 pb-32 px-5 max-w-md mx-auto">
+    <section class="mb-stack-lg">
+        <div class="flex justify-between items-end mb-stack-md">
+            <div>
+                <span class="font-label-caps text-label-caps text-on-surface-variant">YOUR ACTIVE CARD</span>
+                <h2 class="font-h2 text-h2 text-primary">Platinum Visa</h2>
+            </div>
+            <button class="text-secondary font-label-caps text-label-caps">ADD NEW</button>
+        </div>
+        <div class="card-glass aspect-[1.58/1] rounded-[24px] p-container-padding flex flex-col justify-between text-white shadow-[0_20px_40px_rgba(0,52,58,0.15)] relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-[0.03] rounded-full -mr-20 -mt-20"></div>
+            <div class="flex justify-between items-start z-10">
+                <div class="flex flex-col">
+                    <span class="font-label-caps text-[10px] opacity-70">DEBIT</span>
+                    <span class="font-h3 text-h3 tracking-widest mt-1">TRUSTBANK</span>
+                </div>
+                <span class="material-symbols-outlined text-3xl" data-icon="contactless">contactless</span>
+            </div>
+            <div class="z-10">
+                <div class="flex gap-4 items-center mb-stack-sm">
+                    <span class="text-lg tracking-[0.2em] font-medium opacity-60">••••</span>
+                    <span class="text-lg tracking-[0.2em] font-medium opacity-60">••••</span>
+                    <span class="text-lg tracking-[0.2em] font-medium opacity-60">••••</span>
+                    <span class="text-lg tracking-[0.1em] font-medium">8824</span>
+                </div>
+                <div class="flex gap-8">
+                    <div class="flex flex-col">
+                        <span class="font-label-caps text-[10px] opacity-70">EXPIRES</span>
+                        <span class="font-body-sm text-body-sm font-semibold">09 / 28</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-label-caps text-[10px] opacity-70">CVV</span>
+                        <span class="font-body-sm text-body-sm font-semibold">•••</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-end z-10">
+                <span class="font-body-md text-body-md font-semibold">ALEXANDER WRIGHT</span>
+                <div class="w-12 h-8 relative">
+                    <div class="absolute inset-0 bg-white opacity-20 rounded-md"></div>
+                    <img class="w-full h-full object-contain p-1" data-alt="white visa logo with clean typography on a dark background for credit card branding" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACuG8PiwJk4SxLHRfJr58LgXeF0CfFGUFfiwOjHFXOZxX-LWf5G5JBF2lXmZNwGkUSpZhbIhIEGCVd_CiY7z4hZiF48E3FKPNUKwxmaxR61n8tc5UCMNMjxsEec7T5PYNLnTn1R6ekIusKpl4npJEtbHRc8JSx71-Be0LGR_dkWVEOlPJf_g1wU0X-1CBKoA_r3I38B9XIyxT293kktCF_PC9XK3AfBb9YfXWzOykoFChcEG1TnNoT-WoqS1MD3jiM46aqKtkkU6A"/>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="mb-stack-lg bg-white rounded-xl p-container-padding shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-error-container/20 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-error" data-icon="ac_unit">ac_unit</span>
+                </div>
+                <div>
+                    <h3 class="font-h3 text-[18px] text-primary">Freeze Card</h3>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">Temporarily disable all actions</p>
+                </div>
+            </div>
+            <div class="relative inline-flex items-center cursor-pointer">
+                <input class="sr-only peer" type="checkbox" value=""/>
+                <div class="w-14 h-7 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-white rounded-xl p-container-padding shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100">
+        <h3 class="font-h3 text-h3 text-primary mb-stack-md">Limit Settings</h3>
+        <div class="space-y-stack-lg">
+            <div>
+                <div class="flex justify-between items-center mb-stack-sm">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-on-surface-variant" data-icon="atm">atm</span>
+                        <span class="font-body-md text-body-md font-medium text-on-surface">Daily ATM Limit</span>
+                    </div>
+                    <span class="font-numeric-display text-body-lg font-bold text-primary">$1,500</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                    <div class="bg-primary h-1.5 rounded-full" style="width: 65%"></div>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span class="text-[10px] font-label-caps text-on-surface-variant">MIN $0</span>
+                    <span class="text-[10px] font-label-caps text-on-surface-variant">MAX $5,000</span>
+                </div>
+            </div>
+            <div>
+                <div class="flex justify-between items-center mb-stack-sm">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-on-surface-variant" data-icon="shopping_cart">shopping_cart</span>
+                        <span class="font-body-md text-body-md font-medium text-on-surface">Online Transactions</span>
+                    </div>
+                    <span class="font-numeric-display text-body-lg font-bold text-primary">$4,200</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                    <div class="bg-secondary h-1.5 rounded-full" style="width: 84%"></div>
+                </div>
+                <div class="flex justify-between mt-2">
+                    <span class="text-[10px] font-label-caps text-on-surface-variant">MIN $0</span>
+                    <span class="text-[10px] font-label-caps text-on-surface-variant">MAX $10,000</span>
+                </div>
+            </div>
+        </div>
+        <button class="w-full mt-stack-lg py-4 bg-primary text-on-primary rounded-xl font-body-md font-semibold hover:opacity-90 transition-opacity">
+            Update Limits
+        </button>
+    </section>
+    <section class="mt-stack-lg">
+        <h3 class="font-h3 text-h3 text-primary mb-stack-md">Security</h3>
+        <div class="space-y-stack-sm">
+            <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-50">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-on-surface-variant" data-icon="pin">pin</span>
+                    <span class="font-body-md text-body-md">Change Card PIN</span>
+                </div>
+                <span class="material-symbols-outlined text-slate-400" data-icon="chevron_right">chevron_right</span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-slate-50">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-on-surface-variant" data-icon="order_approve">order_approve</span>
+                    <span class="font-body-md text-body-md">Contactless Payment</span>
+                </div>
+                <div class="w-10 h-5 bg-secondary rounded-full relative">
+                    <div class="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<nav class="fixed bottom-0 left-0 w-full h-20 flex justify-around items-center px-4 pb-safe z-50 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 shadow-[0_-4px_20px_rgba(0,0,0,0.04)]">
+    <div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-teal-700 dark:hover:text-teal-300">
+        <span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+        <span class="text-[11px] font-medium font-manrope">Home</span>
+    </div>
+    <div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-teal-700 dark:hover:text-teal-300">
+        <span class="material-symbols-outlined text-[24px]" data-icon="payments">payments</span>
+        <span class="text-[11px] font-medium font-manrope">Payments</span>
+    </div>
+    <div class="flex flex-col items-center justify-center text-teal-900 dark:text-teal-400 bg-teal-50/50 dark:bg-teal-900/20 rounded-xl px-3 py-1">
+        <span class="material-symbols-outlined text-[24px]" data-icon="credit_card" data-weight="fill" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+        <span class="text-[11px] font-medium font-manrope">Cards</span>
+    </div>
+    <div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-3 py-1 hover:text-teal-700 dark:hover:text-teal-300">
+        <span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
+        <span class="text-[11px] font-medium font-manrope">Profile</span>
+    </div>
+</nav>
+</body></html>

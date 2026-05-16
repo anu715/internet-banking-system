@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error-container": "#93000a",
+            "on-primary-container": "#85bbc4",
+            "secondary-fixed": "#62fae3",
+            "secondary-fixed-dim": "#3cddc7",
+            "surface-tint": "#2f666e",
+            "on-secondary": "#ffffff",
+            "on-background": "#111c2d",
+            "secondary": "#006b5f",
+            "tertiary-container": "#424547",
+            "on-secondary-fixed": "#00201c",
+            "on-primary-fixed-variant": "#104e56",
+            "tertiary": "#2b2f31",
+            "error-container": "#ffdad6",
+            "on-surface": "#111c2d",
+            "surface": "#f9f9ff",
+            "surface-bright": "#f9f9ff",
+            "surface-container": "#e7eeff",
+            "surface-container-high": "#dee8ff",
+            "inverse-surface": "#263143",
+            "outline": "#70797a",
+            "on-tertiary-fixed-variant": "#444749",
+            "tertiary-fixed": "#e0e3e5",
+            "on-primary-fixed": "#001f24",
+            "on-surface-variant": "#40484a",
+            "surface-dim": "#cfdaf2",
+            "on-secondary-container": "#007165",
+            "inverse-primary": "#99d0d9",
+            "error": "#ba1a1a",
+            "surface-variant": "#d8e3fb",
+            "on-tertiary-container": "#b0b2b4",
+            "on-secondary-fixed-variant": "#005047",
+            "tertiary-fixed-dim": "#c4c7c9",
+            "background": "#f9f9ff",
+            "primary-fixed-dim": "#99d0d9",
+            "primary-fixed": "#b5ecf5",
+            "on-tertiary": "#ffffff",
+            "primary": "#00343a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-highest": "#d8e3fb",
+            "secondary-container": "#62fae3",
+            "primary-container": "#0d4c54",
+            "on-error": "#ffffff",
+            "outline-variant": "#bfc8ca",
+            "on-tertiary-fixed": "#191c1e",
+            "on-primary": "#ffffff",
+            "inverse-on-surface": "#ecf1ff",
+            "surface-container-low": "#f0f3ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "stack-lg": "32px",
+            "margin-mobile": "20px",
+            "container-padding": "24px",
+            "gutter": "16px",
+            "stack-sm": "8px",
+            "stack-md": "16px"
+          },
+          "fontFamily": {
+            "h3": ["Manrope"],
+            "label-caps": ["Inter"],
+            "body-lg": ["Inter"],
+            "h2": ["Manrope"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "h1": ["Manrope"],
+            "numeric-display": ["Manrope"]
+          },
+          "fontSize": {
+            "h3": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+            "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+            "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+            "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+            "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "numeric-display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- Top App Bar (Suppressed shared navigation as per Task Rules for Login) -->
+<header class="w-full px-5 py-6 flex justify-between items-center bg-transparent">
+  <div class="flex items-center gap-2">
+    <span class="font-h3 text-h3 text-primary tracking-tight font-extrabold">TrustBank</span>
+  </div>
+  <div class="flex items-center gap-4">
+    <span class="material-symbols-outlined text-outline">language</span>
+  </div>
+</header>
+<main class="flex-grow flex flex-col px-margin-mobile pt-stack-lg max-w-md mx-auto w-full">
+  <!-- Hero Section -->
+  <div class="mb-stack-lg">
+    <h1 class="font-h1 text-h1 text-primary mb-2">Welcome back</h1>
+    <p class="font-body-md text-on-surface-variant">Securely access your accounts and manage your wealth.</p>
+  </div>
+  <!-- Login Form -->
+  <form onsubmit="event.preventDefault()" class="space-y-stack-md flex flex-col">
+    <!-- Account Field -->
+    <div class="space-y-stack-sm">
+      <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Account Number or Email</label>
+      <div class="relative flex items-center">
+        <span class="material-symbols-outlined absolute left-4 text-outline">account_circle</span>
+        <input id="email"
+               class="w-full pl-12 pr-4 py-4 rounded-xl border border-outline-variant bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none font-body-md placeholder:text-outline/50"
+               placeholder="e.g. 12345678 or name@mail.com"
+               type="text"/>
+      </div>
+    </div>
+    <!-- Password Field -->
+    <div class="space-y-stack-sm">
+      <div class="flex justify-between items-center">
+        <label class="font-label-caps text-label-caps text-on-surface-variant uppercase">Password</label>
+        <a class="font-label-caps text-label-caps text-secondary hover:underline" href="#">Forgot Password?</a>
+      </div>
+      <div class="relative flex items-center">
+        <span class="material-symbols-outlined absolute left-4 text-outline">lock</span>
+        <input id="password"
+               class="w-full pl-12 pr-12 py-4 rounded-xl border border-outline-variant bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none font-body-md placeholder:text-outline/50"
+               type="password"/>        <span class="material-symbols-outlined absolute right-4 text-outline cursor-pointer">visibility</span>
+      </div>
+    </div>
+    <!-- Security Check / Biometric Visual Placeholder -->
+    <div class="flex items-center gap-3 py-2">
+      <input class="rounded border-outline-variant text-primary focus:ring-primary" id="remember" type="checkbox"/>
+      <label class="font-body-sm text-on-surface-variant" for="remember">Remember me for 30 days</label>
+    </div>
+    <!-- Login Button -->
+    <button
+            class="w-full py-4 bg-primary text-on-primary font-h3 text-h3 rounded-xl shadow-lg shadow-primary/10 hover:opacity-90 active:scale-[0.98] transition-all flex justify-center items-center gap-2 mt-stack-md"
+            type="button"
+            onclick="loginUser()">
+
+      Login
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </button>
+  </form>
+  <!-- Divider -->
+  <div class="relative flex py-8 items-center">
+    <div class="flex-grow border-t border-outline-variant"></div>
+    <span class="flex-shrink mx-4 font-label-caps text-label-caps text-outline uppercase">Or continue with</span>
+    <div class="flex-grow border-t border-outline-variant"></div>
+  </div>
+  <!-- Biometric / Social Option -->
+  <div class="grid grid-cols-2 gap-gutter">
+    <button onclick="biometricLogin()"
+            class="flex items-center justify-center gap-2 p-4 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container transition-colors">
+
+      <span class="material-symbols-outlined text-primary">fingerprint</span>
+      <span class="font-body-sm font-semibold">Touch ID</span>
+    </button>
+    <button class="flex items-center justify-center gap-2 p-4 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container transition-colors">
+      <span class="material-symbols-outlined text-primary">face</span>
+      <span class="font-body-sm font-semibold">Face ID</span>
+    </button>
+  </div>
+  <!-- Graphic Element / Trust Badge -->
+  <div class="mt-auto pt-stack-lg pb-stack-lg flex flex-col items-center">
+    <div class="w-full aspect-[2/1] rounded-2xl overflow-hidden mb-stack-md relative shadow-sm border border-outline-variant/30">
+      <img alt="Safe and secure banking" class="w-full h-full object-cover grayscale opacity-80 mix-blend-multiply" data-alt="Modern high-end glass architecture of a bank building reflecting a clear blue sky, minimalist and professional aesthetic with clean lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4rDnbBNjy0Ms-YCHsYJAjQ6--szDibsOZ6D2Bo_F9gkpeA4IrcEFIz1OomY0UQJd4SFISyLxHferCs-R5-Jf4y9tX4eHlaxAWNCGgORy1fx3JmTl2FEf4kgt_QHyBsYZjLwWaW1qRhlJHYgRfTZFoYJySDz64yz7r2_wCZWiUn9SXF0UU-uNSFNqqXDZmOSsC-w-wg-zC2TX90RzqsYX2K3WzoEbcTGJ8xUZWyWIfi3QEstm7UZYq8vR7HKcxBtLxzm_RsR6r9fs"/>
+      <div class="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent"></div>
+    </div>
+    <p class="font-body-sm text-on-surface-variant text-center px-4">
+      Don't have an account yet?
+      <a class="text-secondary font-bold hover:underline" href="#">Sign up</a>
+    </p>
+  </div>
+</main>
+<!-- Footer Security Information -->
+<footer class="px-margin-mobile py-stack-md text-center">
+  <div class="flex items-center justify-center gap-2 text-outline">
+    <span class="material-symbols-outlined text-[16px]">verified_user</span>
+    <span class="font-label-caps text-[10px] uppercase tracking-widest">End-to-End Encrypted &amp; Secure</span>
+  </div>
+</footer>
+
+<script>
+  function loginUser() {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    console.log(email, password);
+
+    if (!email || !password) {
+      alert("Enter email and password");
+      return;
+    }
+
+    fetch("http://localhost:8080/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    })
+            .then(res => res.text())
+            .then(data => {
+              console.log("Response:", data);
+
+              if (data.trim() === "Login success") {
+                localStorage.setItem("userEmail", email);
+                window.location.href = "dashboard.html";
+              } else {
+                alert("Invalid credentials");
+              }
+            })
+            .catch(err => {
+              console.error(err);
+              alert("Server error");
+            });
+  }
+
+  function biometricLogin() {
+    const email = localStorage.getItem("userEmail");
+
+    if (!email) {
+      alert("No saved user. Please login first.");
+      return;
+    }
+
+    window.location.href = "dashboard.html";
+  }
+</script>
+
+</body>
+</html>

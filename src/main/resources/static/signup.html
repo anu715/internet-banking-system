@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#85bbc4",
+                        "secondary-fixed": "#62fae3",
+                        "secondary-fixed-dim": "#3cddc7",
+                        "surface-tint": "#2f666e",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#111c2d",
+                        "secondary": "#006b5f",
+                        "tertiary-container": "#424547",
+                        "on-secondary-fixed": "#00201c",
+                        "on-primary-fixed-variant": "#104e56",
+                        "tertiary": "#2b2f31",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#111c2d",
+                        "surface": "#f9f9ff",
+                        "surface-bright": "#f9f9ff",
+                        "surface-container": "#e7eeff",
+                        "surface-container-high": "#dee8ff",
+                        "inverse-surface": "#263143",
+                        "outline": "#70797a",
+                        "on-tertiary-fixed-variant": "#444749",
+                        "tertiary-fixed": "#e0e3e5",
+                        "on-primary-fixed": "#001f24",
+                        "on-surface-variant": "#40484a",
+                        "surface-dim": "#cfdaf2",
+                        "on-secondary-container": "#007165",
+                        "inverse-primary": "#99d0d9",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#d8e3fb",
+                        "on-tertiary-container": "#b0b2b4",
+                        "on-secondary-fixed-variant": "#005047",
+                        "tertiary-fixed-dim": "#c4c7c9",
+                        "background": "#f9f9ff",
+                        "primary-fixed-dim": "#99d0d9",
+                        "primary-fixed": "#b5ecf5",
+                        "on-tertiary": "#ffffff",
+                        "primary": "#00343a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d8e3fb",
+                        "secondary-container": "#62fae3",
+                        "primary-container": "#0d4c54",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#bfc8ca",
+                        "on-tertiary-fixed": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#ecf1ff",
+                        "surface-container-low": "#f0f3ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "margin-mobile": "20px",
+                        "container-padding": "24px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h2": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "h1": ["Manrope"],
+                        "numeric-display": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "h3": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "letterSpacing": "0", "fontWeight": "400"}],
+                        "h1": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "numeric-display": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- Transactional Top Bar (Manual override for Signup flow as per Shell Visibility rules) -->
+<header class="bg-slate-50 dark:bg-slate-950 flex justify-between items-center w-full px-5 py-3 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+    <div class="flex items-center gap-3">
+        <button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-slate-100 transition-colors">
+            <span class="material-symbols-outlined text-teal-900">arrow_back</span>
+        </button>
+        <span class="text-lg font-bold text-teal-900 dark:text-teal-500 font-h3">TrustBank</span>
+    </div>
+    <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center">
+        <span class="material-symbols-outlined text-teal-900 text-sm">help</span>
+    </div>
+</header>
+<main class="flex-grow px-margin-mobile pt-stack-lg pb-10 max-w-lg mx-auto w-full">
+    <div class="flex flex-col gap-stack-sm mb-stack-lg">
+        <h1 class="font-h1 text-h1 text-primary">Join TrustBank</h1>
+        <p class="font-body-md text-body-md text-on-surface-variant">Secure your financial future with a premier digital account.</p>
+    </div>
+    <!-- Form Container Level 1 Elevation -->
+    <section class="bg-surface-container-lowest rounded-xl p-container-padding shadow-[0_4px_20px_rgba(0,0,0,0.04)] border border-slate-100">
+        <form class="flex flex-col gap-stack-md">
+            <!-- Full Name Field -->
+            <div class="flex flex-col gap-1.5">
+                <label class="font-label-caps text-label-caps text-outline uppercase">Full Name</label>
+                <div class="relative">
+                    <input class="w-full h-14 pl-12 pr-4 rounded-lg border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all font-body-md bg-white text-on-surface placeholder:text-slate-300" placeholder="Alex Sterling" type="text"/>
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">person</span>
+                </div>
+            </div>
+            <!-- Email Field -->
+            <div class="flex flex-col gap-1.5">
+                <label class="font-label-caps text-label-caps text-outline uppercase">Email Address</label>
+                <div class="relative">
+                    <input class="w-full h-14 pl-12 pr-4 rounded-lg border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all font-body-md bg-white text-on-surface placeholder:text-slate-300" placeholder="alex@sterling.com" type="email"/>
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">mail</span>
+                </div>
+            </div>
+            <!-- Phone Number Field -->
+            <div class="flex flex-col gap-1.5">
+                <label class="font-label-caps text-label-caps text-outline uppercase">Phone Number</label>
+                <div class="relative">
+                    <input class="w-full h-14 pl-12 pr-4 rounded-lg border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all font-body-md bg-white text-on-surface placeholder:text-slate-300" placeholder="+1 (555) 000-0000" type="tel"/>
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">phone_iphone</span>
+                </div>
+            </div>
+            <!-- Password Field -->
+            <div class="flex flex-col gap-1.5">
+                <label class="font-label-caps text-label-caps text-outline uppercase">Secure Password</label>
+                <div class="relative">
+                    <input class="w-full h-14 pl-12 pr-12 rounded-lg border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all font-body-md bg-white text-on-surface placeholder:text-slate-300" placeholder="••••••••••••" type="password"/>
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">lock</span>
+                    <button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary" type="button">
+                        <span class="material-symbols-outlined">visibility</span>
+                    </button>
+                </div>
+                <p class="text-[10px] text-outline font-body-sm mt-1">Must be at least 8 characters with one number and symbol.</p>
+            </div>
+            <!-- Terms and Conditions -->
+            <div class="flex items-start gap-3 mt-stack-sm">
+                <div class="pt-1">
+                    <input class="w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary cursor-pointer" id="terms" type="checkbox"/>
+                </div>
+                <label class="text-body-sm text-on-surface-variant leading-tight" for="terms">
+                    I agree to the <a class="text-secondary font-semibold hover:underline" href="#">Terms and Conditions</a> and the <a class="text-secondary font-semibold hover:underline" href="#">Privacy Policy</a>.
+                </label>
+            </div>
+            <!-- Create Account Button -->
+            <button class="mt-stack-md w-full h-14 bg-primary text-white rounded-lg font-h3 text-body-lg flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all" type="submit">
+                Create Account
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+        </form>
+    </section>
+    <!-- Social Proof/Bento Visual -->
+    <section class="mt-stack-lg grid grid-cols-2 gap-gutter">
+        <div class="bg-secondary-container/20 p-4 rounded-xl flex flex-col gap-2">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+            <p class="font-label-caps text-label-caps text-secondary uppercase">Secure</p>
+            <p class="text-[11px] text-on-secondary-container font-body-sm">Bank-grade encryption &amp; security.</p>
+        </div>
+        <div class="bg-surface-container-high p-4 rounded-xl flex flex-col gap-2">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">speed</span>
+            <p class="font-label-caps text-label-caps text-primary uppercase">Fast</p>
+            <p class="text-[11px] text-on-surface-variant font-body-sm">Sign up in less than 3 minutes.</p>
+        </div>
+    </section>
+    <p class="text-center mt-stack-lg text-body-sm text-on-surface-variant">
+        Already have an account? <a class="text-secondary font-bold hover:underline" href="#">Log In</a>
+    </p>
+</main>
+<!-- Visual Anchor Image Section -->
+<div class="w-full mt-auto">
+    <div class="relative h-48 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent z-10"></div>
+        <img class="w-full h-full object-cover grayscale opacity-30" data-alt="abstract 3d visualization of flowing teal and silver digital waves representing secure financial data stream and connectivity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiHRUvDb6bwxJnbY4pNpCXUnhKYwn0e5s_7D_mJT8Hpq_j8G-YP98y9v2XI8-Vl8l9ZkCkMilpcC4QXCd_sTgRwkeZ9IwlFvkLTnFx8gmR-uqKEQWk6dl2XJ0_JLcVRnKCLGXxUlTjYKE3DkXSLCNflRmTY6aMEwU0RM6lA3tFX_EwMygdS5RQIVvRF5WoREF49sS4IYkNgaQCJlOHp0IXhZgpZN2wzokszUpiBTS4WTlgoM7wZK9mVcLalL2id3HUHROUFGQ0dww"/>
+    </div>
+</div>
+</body></html>
