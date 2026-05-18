@@ -157,7 +157,7 @@ function Dashboard() {
 
             console.error(error);
 
-            alert("Transfer failed");
+            alert(error.response.data);
         }
     };
 
