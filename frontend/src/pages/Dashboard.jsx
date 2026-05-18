@@ -125,7 +125,7 @@ function Dashboard() {
             const token = localStorage.getItem("token");
 
             await axios.post(
-                `http://localhost:8080/api/transfer?senderEmail=${senderEmail}&receiverAccountNumber=${receiverEmail}&amount=${transferAmount}`,
+                `https://internet-banking-backend.onrender.com/api/transfer?senderEmail=${senderEmail}&receiverAccountNumber=${receiverEmail}&amount=${transferAmount}`,
                 {},
                 {
                     headers: {
@@ -135,7 +135,7 @@ function Dashboard() {
             );
 
             const response = await axios.get(
-                `http://localhost:8080/api/user/${senderEmail}`,
+                `https://internet-banking-backend.onrender.com/api/user/${senderEmail}`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`

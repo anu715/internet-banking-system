@@ -33,27 +33,36 @@ function Admin() {
             return;
         }
 
-        axios.get("http://localhost:8080/api/users", {
-            headers: {
-                Authorization: `Bearer ${token}`
+        axios.get(
+            "https://internet-banking-backend.onrender.com/api/users",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        }).then((response) => {
+        ).then((response) => {
             setUsers(response.data);
         });
 
-        axios.get("http://localhost:8080/api/transactions", {
-            headers: {
-                Authorization: `Bearer ${token}`
+        axios.get(
+            "https://internet-banking-backend.onrender.com/api/transactions",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        }).then((response) => {
+        ).then((response) => {
             setTransactions(response.data);
         });
 
-        axios.get("http://localhost:8080/api/audit-logs", {
-            headers: {
-                Authorization: `Bearer ${token}`
+        axios.get(
+            "https://internet-banking-backend.onrender.com/api/audit-logs",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        }).then((response) => {
+        ).then((response) => {
             setAuditLogs(response.data);
         });
 
@@ -91,10 +100,11 @@ function Admin() {
         }
     ];
     const freezeUser = async (userId) => {
+
         const token = localStorage.getItem("token");
 
         await axios.post(
-            `http://localhost:8080/api/freeze/${userId}`,
+            `https://internet-banking-backend.onrender.com/api/freeze/${userId}`,
             {},
             {
                 headers: {
@@ -103,19 +113,24 @@ function Admin() {
             }
         );
 
-        const response = await axios.get("http://localhost:8080/api/users", {
-            headers: {
-                Authorization: `Bearer ${token}`
+        const response = await axios.get(
+            "https://internet-banking-backend.onrender.com/api/users",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        });
+        );
 
         setUsers(response.data);
     };
+
     const unfreezeUser = async (userId) => {
+
         const token = localStorage.getItem("token");
 
         await axios.post(
-            `http://localhost:8080/api/unfreeze/${userId}`,
+            `https://internet-banking-backend.onrender.com/api/unfreeze/${userId}`,
             {},
             {
                 headers: {
@@ -124,11 +139,14 @@ function Admin() {
             }
         );
 
-        const response = await axios.get("http://localhost:8080/api/users", {
-            headers: {
-                Authorization: `Bearer ${token}`
+        const response = await axios.get(
+            "https://internet-banking-backend.onrender.com/api/users",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             }
-        });
+        );
 
         setUsers(response.data);
     };
