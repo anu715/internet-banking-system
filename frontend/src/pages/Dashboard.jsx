@@ -24,7 +24,7 @@ function Dashboard() {
         const email = localStorage.getItem("email");
 
         axios.get(
-            `http://localhost:8080/api/user/${email}`,
+            `https://internet-banking-backend.onrender.com/api/user/${email}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -36,14 +36,13 @@ function Dashboard() {
                 setUser(response.data);
 
                 axios.get(
-                    `http://localhost:8080/api/transactions/${response.data.id}`,
+                    `https://internet-banking-backend.onrender.com/api/transactions/${response.data.id}`,
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
                         }
                     }
-                )
-                    .then((res) => {
+                )  .then((res) => {
                         setTransactions(res.data);
                     });
 
@@ -56,7 +55,7 @@ function Dashboard() {
         const token = localStorage.getItem("token");
 
         const response = await axios.get(
-            `http://localhost:8080/api/transactions/${userId}`,
+            `https://internet-banking-backend.onrender.com/api/transactions/${userId}`,
             {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -73,7 +72,7 @@ function Dashboard() {
         const token = localStorage.getItem("token");
 
         const response = await axios.post(
-            `http://localhost:8080/api/deposit/${email}/${amount}`,
+            `https://internet-banking-backend.onrender.com/api/deposit/${email}/${amount}`,
             {},
             {
                 headers: {
@@ -96,7 +95,7 @@ function Dashboard() {
             const token = localStorage.getItem("token");
 
             const response = await axios.post(
-                `http://localhost:8080/api/withdraw/${user.email}/${withdrawAmount}`,
+                `https://internet-banking-backend.onrender.com/api/withdraw/${user.email}/${withdrawAmount}`,
                 {},
                 {
                     headers: {
