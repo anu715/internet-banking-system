@@ -4,6 +4,7 @@ package com.bank.internetbanking.entity;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import jakarta.persistence.Column;
 
 
 @Entity
