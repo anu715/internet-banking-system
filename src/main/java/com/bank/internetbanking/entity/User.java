@@ -3,6 +3,7 @@ package com.bank.internetbanking.entity;
 
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -14,8 +15,10 @@ public class User {
 
     private String name;
 
+    @Column(unique = true)
     private String email;
 
+    @Column(unique = true)
     private String accountNumber;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

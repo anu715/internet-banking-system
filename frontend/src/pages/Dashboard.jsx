@@ -119,12 +119,14 @@ function Dashboard() {
     };
 
     const transferMoney = async () => {
+
         try {
+
             const senderEmail = localStorage.getItem("email");
             const token = localStorage.getItem("token");
 
             await axios.post(
-                `https://internet-banking-backend.onrender.com/api/transfer?senderEmail=${senderEmail}&receiverAccountNumber=${receiverEmail}&amount=${transferAmount}`,
+                `https://internet-banking-backend.onrender.com/api/transfer?senderEmail=${senderEmail}&receiverAccountNumber=${receiverAccountNumber}&amount=${transferAmount}`,
                 {},
                 {
                     headers: {
@@ -143,19 +145,25 @@ function Dashboard() {
             );
 
             setUser(response.data);
+
             loadTransactions(response.data.id);
 
-            setReceiverEmail("");
+            setReceiverAccountNumber("");
             setTransferAmount("");
 
             alert("Transfer successful");
 
         } catch (error) {
-            alert(error.response.data);
+
+            console.error(error);
+
+            alert("Transfer failed");
         }
     };
 
     const logout = () => {
+
+
 
         localStorage.removeItem("token");
         localStorage.removeItem("email");
