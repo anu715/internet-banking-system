@@ -8,6 +8,7 @@ import com.bank.internetbanking.dto.LoginRequest;
 import com.bank.internetbanking.dto.RegisterRequest;
 import com.bank.internetbanking.dto.UserResponse;
 import com.bank.internetbanking.dto.LoginResponse;
+import com.bank.internetbanking.entity.AuditLog;
 
 
 import java.util.List;
@@ -97,6 +98,10 @@ public class UserController {
     @GetMapping("/transactions")
     public List<Transaction> getAllTransactions() {
         return userService.getAllTransactions();
+    }
+    @GetMapping("/audit-logs")
+    public List<AuditLog> getAuditLogs() {
+        return userService.getAuditLogs();
     }
     @GetMapping("/users")
     public List<User> getAllUsers() {

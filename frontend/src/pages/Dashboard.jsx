@@ -91,56 +91,69 @@ function Dashboard() {
 
     const withdrawMoney = async () => {
 
-        const email = localStorage.getItem("email");
-        const token = localStorage.getItem("token");
+        try {
 
-        const response = await axios.post(
-            `http://localhost:8080/api/withdraw/${email}/${withdrawAmount}`,
-            {},
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            const token = localStorage.getItem("token");
+
+            const response = await axios.post(
+                `http://localhost:8080/api/withdraw/${user.email}/${withdrawAmount}`,
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            }
-        );
+            );
 
-        setUser(response.data);
+            setUser(response.data);
 
-        loadTransactions(response.data.id);
+            loadTransactions(user.id);
 
-        setWithdrawAmount("");
+            setWithdrawAmount("");
+
+            alert("Withdraw successful");
+
+        } catch (error) {
+
+            alert(error.response.data);
+        }
     };
 
     const transferMoney = async () => {
+        try {
+            const senderEmail = localStorage.getItem("email");
+            const token = localStorage.getItem("token");
 
-        const senderEmail = localStorage.getItem("email");
-        const token = localStorage.getItem("token");
-
-        await axios.post(
-            `http://localhost:8080/api/transfer?senderEmail=${senderEmail}&receiverAccountNumber=${receiverAccountNumber}&amount=${transferAmount}`,
-            {},
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            await axios.post(
+                `http://localhost:8080/api/transfer?senderEmail=${senderEmail}&receiverAccountNumber=${receiverEmail}&amount=${transferAmount}`,
+                {},
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            }
-        );
+            );
 
-        const response = await axios.get(
-            `http://localhost:8080/api/user/${senderEmail}`,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            const response = await axios.get(
+                `http://localhost:8080/api/user/${senderEmail}`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
                 }
-            }
-        );
+            );
 
-        setUser(response.data);
+            setUser(response.data);
+            loadTransactions(response.data.id);
 
-        loadTransactions(response.data.id);
+            setReceiverEmail("");
+            setTransferAmount("");
 
-        setReceiverAccountNumber("");
-        setTransferAmount("");
+            alert("Transfer successful");
+
+        } catch (error) {
+            alert(error.response.data);
+        }
     };
 
     const logout = () => {

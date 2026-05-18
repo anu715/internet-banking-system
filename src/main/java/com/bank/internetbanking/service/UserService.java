@@ -7,6 +7,8 @@ import com.bank.internetbanking.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.bank.internetbanking.security.JwtService;
+import com.bank.internetbanking.entity.AuditLog;
+import com.bank.internetbanking.repository.AuditLogRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,11 +21,14 @@ public class UserService {
     private final TransactionRepository transactionRepository;
     private final BCryptPasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final AuditLogRepository auditLogRepository;
 
     public UserService(UserRepository userRepository,
                        TransactionRepository transactionRepository,
                        BCryptPasswordEncoder passwordEncoder,
-                       JwtService jwtService) {
+                       JwtService jwtService,
+                       AuditLogRepository auditLogRepository) {
+        this.auditLogRepository = auditLogRepository;
 
         this.userRepository = userRepository;
         this.transactionRepository = transactionRepository;
@@ -46,6 +51,11 @@ public class UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepository.save(user);
+        saveAuditLog(
+                "REGISTER",
+                user.getEmail(),
+                "New user registered"
+        );
 
         return "Registration successful";
     }
@@ -62,6 +72,12 @@ public class UserService {
         }
 
         if (passwordEncoder.matches(loginUser.getPassword(), user.getPassword())) {
+
+            saveAuditLog(
+                    "LOGIN",
+                    user.getEmail(),
+                    "User logged in"
+            );
 
             return jwtService.generateToken(
                     user.getEmail(),
@@ -178,6 +194,9 @@ public class UserService {
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }
+    public List<AuditLog> getAuditLogs() {
+        return auditLogRepository.findAll();
+    }
 
     public String freezeAccount(Long userId) {
 
@@ -198,8 +217,24 @@ public class UserService {
         user.setAccountStatus("ACTIVE");
 
         userRepository.save(user);
+        saveAuditLog(
+                "REGISTER",
+                user.getEmail(),
+                "New user registered"
+        );
 
         return "Account unfrozen successfully";
+    }
+    private void saveAuditLog(String action, String email, String details) {
+
+        AuditLog auditLog = new AuditLog();
+
+        auditLog.setAction(action);
+        auditLog.setEmail(email);
+        auditLog.setDetails(details);
+        auditLog.setTime(LocalDateTime.now());
+
+        auditLogRepository.save(auditLog);
     }
 
     private void saveTransaction(Long senderId,

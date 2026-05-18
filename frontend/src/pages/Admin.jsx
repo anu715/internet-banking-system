@@ -20,6 +20,7 @@ function Admin() {
     const [transactions, setTransactions] = useState([]);
 
     const navigate = useNavigate();
+    const [auditLogs, setAuditLogs] = useState([]);
 
     useEffect(() => {
 
@@ -46,6 +47,14 @@ function Admin() {
             }
         }).then((response) => {
             setTransactions(response.data);
+        });
+
+        axios.get("http://localhost:8080/api/audit-logs", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response) => {
+            setAuditLogs(response.data);
         });
 
     }, []);
@@ -238,6 +247,34 @@ function Admin() {
                                     </button>
                                 )}
                             </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+
+            </section>
+
+            <section className="admin-table-section">
+
+                <h2>Audit Logs</h2>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Email</th>
+                        <th>Details</th>
+                        <th>Time</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {auditLogs.map((log) => (
+                        <tr key={log.id}>
+                            <td>{log.action}</td>
+                            <td>{log.email}</td>
+                            <td>{log.details}</td>
+                            <td>{log.time}</td>
                         </tr>
                     ))}
                     </tbody>
