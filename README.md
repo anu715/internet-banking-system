@@ -113,17 +113,34 @@ GitHub Repository:
 
 ---
 
-# Screenshots
+## Screenshots
 
-Add screenshots here:
+### Login Page
+![Login](screenshots/login.png)
 
-* Login Page
-* Register Page
-* Dashboard
-* Admin Dashboard
-* Analytics Dashboard
-* Swagger UI
-* Audit Logs
+### Register Page
+![Register](screenshots/register.png)
+
+### User Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Transfer Money
+![Transfer](screenshots/transfer.png)
+
+### Withdraw & Transaction History
+![Transactions](screenshots/withdraw%20and%20transaction%20history.png)
+
+### Admin Dashboard
+![Admin](screenshots/admin.png)
+
+### Analytics
+![Analytics](screenshots/analytics.png)
+
+### Audit Logs
+![Audit Logs](screenshots/auditlogs.png)
+
+### Swagger API Documentation
+![Swagger](screenshots/swagger.png)
 
 ---
 
