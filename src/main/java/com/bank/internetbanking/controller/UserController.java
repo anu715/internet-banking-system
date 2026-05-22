@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin
+@CrossOrigin(origins = "https://internet-banking-system-pi.vercel.app")
 public class UserController {
 
     private final UserService userService;
