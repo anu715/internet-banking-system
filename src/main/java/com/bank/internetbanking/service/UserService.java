@@ -1,18 +1,17 @@
 package com.bank.internetbanking.service;
 
+import com.bank.internetbanking.entity.AuditLog;
 import com.bank.internetbanking.entity.Transaction;
 import com.bank.internetbanking.entity.User;
+import com.bank.internetbanking.repository.AuditLogRepository;
 import com.bank.internetbanking.repository.TransactionRepository;
 import com.bank.internetbanking.repository.UserRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.bank.internetbanking.security.JwtService;
-import com.bank.internetbanking.entity.AuditLog;
-import com.bank.internetbanking.repository.AuditLogRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 
 @Service
 public class UserService {
@@ -28,29 +27,28 @@ public class UserService {
                        BCryptPasswordEncoder passwordEncoder,
                        JwtService jwtService,
                        AuditLogRepository auditLogRepository) {
-        this.auditLogRepository = auditLogRepository;
 
         this.userRepository = userRepository;
         this.transactionRepository = transactionRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtService = jwtService;
+        this.auditLogRepository = auditLogRepository;
     }
 
     public String register(User user) {
-        if (userRepository.findByEmail(user.getEmail()) != null) {
+
+        if (userRepository.existsByEmail(user.getEmail())) {
             return "Email already exists";
         }
 
         user.setBalance(0.0);
         user.setRole("USER");
         user.setAccountStatus("ACTIVE");
-
-        user.setAccountNumber(
-                "ACC" + System.currentTimeMillis()
-        );
+        user.setAccountNumber("ACC" + System.currentTimeMillis());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         userRepository.save(user);
+
         saveAuditLog(
                 "REGISTER",
                 user.getEmail(),
@@ -61,11 +59,9 @@ public class UserService {
     }
 
     public String login(User loginUser) {
-        User user = userRepository.findByEmail(loginUser.getEmail());
 
-        if (user == null) {
-            throw new RuntimeException("User not found");
-        }
+        User user = userRepository.findByEmail(loginUser.getEmail())
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (!user.getAccountStatus().equals("ACTIVE")) {
             throw new RuntimeException("Account is frozen. Contact admin.");
@@ -89,15 +85,16 @@ public class UserService {
     }
 
     public User getUser(String email) {
-        return userRepository.findByEmail(email);
+
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
     public User deposit(String email, double amount) {
-        User user = userRepository.findByEmail(email);
 
-        if (user == null) {
-            throw new RuntimeException("User not found");
-        }
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
         if (!user.getAccountStatus().equals("ACTIVE")) {
             throw new RuntimeException("Account is frozen");
         }
@@ -111,15 +108,19 @@ public class UserService {
 
         saveTransaction(user.getId(), user.getId(), amount, "DEPOSIT");
 
+        saveAuditLog(
+                "DEPOSIT",
+                user.getEmail(),
+                "Deposited amount: " + amount
+        );
+
         return user;
     }
 
     public User withdraw(String email, double amount) {
-        User user = userRepository.findByEmail(email);
 
-        if (user == null) {
-            throw new RuntimeException("User not found");
-        }
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
         if (!user.getAccountStatus().equals("ACTIVE")) {
             throw new RuntimeException("Account is frozen");
@@ -138,6 +139,12 @@ public class UserService {
 
         saveTransaction(user.getId(), user.getId(), amount, "WITHDRAW");
 
+        saveAuditLog(
+                "WITHDRAW",
+                user.getEmail(),
+                "Withdraw amount: " + amount
+        );
+
         return user;
     }
 
@@ -145,15 +152,12 @@ public class UserService {
                            String receiverAccountNumber,
                            double amount) {
 
-        User sender = userRepository.findByEmail(senderEmail);
+        User sender = userRepository.findByEmail(senderEmail)
+                .orElseThrow(() -> new RuntimeException("Sender not found"));
 
-        User receiver = userRepository.findByAccountNumber(
-                receiverAccountNumber
-        );
+        User receiver = userRepository.findByAccountNumber(receiverAccountNumber)
+                .orElseThrow(() -> new RuntimeException("Receiver not found"));
 
-        if (sender == null || receiver == null) {
-            throw new RuntimeException("User not found");
-        }
         if (!sender.getAccountStatus().equals("ACTIVE")) {
             throw new RuntimeException("Sender account is frozen");
         }
@@ -179,9 +183,14 @@ public class UserService {
                 "TRANSFER"
         );
 
+        saveAuditLog(
+                "TRANSFER",
+                sender.getEmail(),
+                "Transferred " + amount + " to " + receiver.getAccountNumber()
+        );
+
         return "Transfer success";
     }
-
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -191,9 +200,11 @@ public class UserService {
         return transactionRepository
                 .findBySenderIdOrReceiverIdOrderByTimeDesc(userId, userId);
     }
+
     public List<Transaction> getAllTransactions() {
         return transactionRepository.findAll();
     }
+
     public List<AuditLog> getAuditLogs() {
         return auditLogRepository.findAll();
     }
@@ -204,27 +215,34 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         user.setAccountStatus("FROZEN");
-
         userRepository.save(user);
+
+        saveAuditLog(
+                "FREEZE_ACCOUNT",
+                user.getEmail(),
+                "Account frozen by admin"
+        );
 
         return "Account frozen successfully";
     }
+
     public String unfreezeAccount(Long userId) {
 
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         user.setAccountStatus("ACTIVE");
-
         userRepository.save(user);
+
         saveAuditLog(
-                "REGISTER",
+                "UNFREEZE_ACCOUNT",
                 user.getEmail(),
-                "New user registered"
+                "Account unfrozen by admin"
         );
 
         return "Account unfrozen successfully";
     }
+
     private void saveAuditLog(String action, String email, String details) {
 
         AuditLog auditLog = new AuditLog();
