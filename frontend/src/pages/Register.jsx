@@ -21,8 +21,19 @@ function Register() {
                 }
             );
 
-            alert(response.data);
-            navigate("/login");
+            const loginResponse = await axios.post(
+                "https://internet-banking-backend.onrender.com/api/login",
+                {
+                    email,
+                    password
+                }
+            );
+
+            localStorage.setItem("token", loginResponse.data);
+
+            localStorage.setItem("email", email);
+
+            window.location.href = "/dashboard";
 
         } catch (error) {
             alert(error.response.data);
